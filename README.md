@@ -29,19 +29,37 @@ To write and simulate an Assembly Language Program using the 8051 microcontrolle
 
 # Program:
 
-
-
+```asm
+ORG 0000H
+CLR P2.0        
+MOV TMOD, #01H   
+AGAIN:
+MOV TH0, #0F7H    
+MOV TL0, #0CEH    
+CLR TF0           
+SETB TR0         
+WAIT:
+JNB TF0, WAIT    
+CLR TR0          
+CLR TF0          
+CPL P2.0          
+SJMP AGAIN       
+END
+```
 
 # Output From Keil:
 
+<img width="706" height="399" alt="Screenshot 2025-10-24 192048" src="https://github.com/user-attachments/assets/1039bd52-0960-4994-9253-5c3403bfaa6d" />
 
+# Manual Calculation: 
 
+* 8051 crystal = 11.0592 MHz
+* Machine cycle = 12 clocks
+* Time per timer tick:
+          T = 12/11.0592 ≈ 1.085μs
 
-
-
-# Manual Calculation:
-
-
+* Required delay = 2 ms = 2000 µs
+ Counts needed = 2000/1.085 ​≈ 1842
 
 # Result:
 Thus, the 8051 Assembly Language Program to blink an LED with a 250 ms delay using Timer1 in Mode1 was successfully written, assembled, and simulated using Keil µVision.
