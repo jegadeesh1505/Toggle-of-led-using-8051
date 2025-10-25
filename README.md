@@ -61,6 +61,9 @@ END
 * Required delay = 2 ms = 2000 µs
  Counts needed = 2000/1.085 ​≈ 1842
 
+* Timer delay verification:
+   1842×1.085μs ≈ 1998.87μs ≈ 2ms
+
 # Result:
 Thus, the 8051 Assembly Language Program to blink an LED with a 250 ms delay using Timer1 in Mode1 was successfully written, assembled, and simulated using Keil µVision.
 The LED connected to Port 0.5 was observed to toggle every 250 ms.
